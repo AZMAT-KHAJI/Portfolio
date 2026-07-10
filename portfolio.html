@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azmat Khaji - Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #ffffff;
+    --bg-alt: #f7f7f7;
+    --panel: #ffffff;
+    --ink: #1f2937;
+    --ink-soft: #6b7280;
+    --line: #e5e7eb;
+    --accent: #374151;
+    --accent-soft: #f3f4f6;
+    --accent-warm: #c0d5fafd;
+    --highlight: #111827;
+    --accent-deep: #111827;
+    --shadow: 0 1px 2px rgba(44,26,102,0.06), 0 8px 24px rgba(44,26,102,0.07);
+    --shadow-hover: 0 4px 10px rgba(161, 141, 228, 0.09), 0 16px 36px rgba(44,26,102,0.13);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  section, header.hero, footer{ scroll-margin-top:80px; }
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(91,61,240,0.08), transparent 55%),
+      radial-gradient(ellipse 700px 500px at 100% 20%, rgba(255,107,107,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; color:var(--accent-deep); }
+  a{ color:inherit; text-decoration:none; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 32px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @keyframes floatGlow{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-14px,18px); } }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:translateY(0); } }
+
+  /* NAV */
+ /* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:78px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:'Fraunces', serif;
+  font-size:24px;
+  font-weight:700;
+  color:#111827;
+}
+
+.brand .mark{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#374151,#9ca3af);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:700;
+}
+
+.navlinks{
+  display:flex;
+  gap:36px;
+}
+
+.navlinks a{
+  font-size:16px;
+  font-weight:600;
+  color:#374151;
+  transition:.2s ease;
+}
+
+.navlinks a:hover{
+  color:#111827;
+}
+
+  /* HERO */
+  header.hero{ position:relative; padding:120px 0 110px; overflow:hidden; background:linear-gradient(120deg, #374151 0%, #4b5563 45%, #9ca3af 100%); }
+  .hero-glow{ position:absolute; top:-160px; right:-140px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0) 70%); z-index:0; pointer-events:none; animation:floatGlow 14s ease-in-out infinite; }
+  .hero-glow2{ position:absolute; bottom:-180px; left:-120px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0) 70%); z-index:0; pointer-events:none; animation:floatGlow 18s ease-in-out infinite reverse; }
+  .hero-grid{ display:grid; grid-template-columns:1fr 220px; gap:48px; align-items:center; position:relative; z-index:1; }
+  .hero-grid > div:first-child{ animation:fadeUp .8s ease both; }
+  .hero-photo{ justify-self:end; animation:fadeUp .8s ease .15s both; }
+.hero-photo img{
+  width:230px;
+  height:300px;
+  object-fit:cover;
+  object-position:center 35%;
+  border-radius:18px;
+  border:2px solid rgba(255,255,255,0.35);
+  box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+  .hero h1{ font-size:clamp(30px,4.6vw,48px); line-height:1.16; color:#fff; }
+  .hero p.lede{ margin-top:20px; max-width:560px; color:rgba(255,255,255,0.88); font-size:17.5px; }
+  .hero-stats{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+  margin-top:46px;
+  width:100%;
+}
+  .stat{ background:rgba(255,255,255,0.22); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.35); border-left:4px solid #ffffff; border-radius:8px; padding:16px 22px; transition:.25s ease; animation:fadeUp .7s ease both; }
+  .hero-stats .stat:nth-child(1){ animation-delay:.2s; }
+  .hero-stats .stat:nth-child(2){ animation-delay:.3s; }
+  .hero-stats .stat:nth-child(3){ animation-delay:.4s; }
+  .hero-stats .stat:nth-child(4){ animation-delay:.5s; }
+  .stat:hover{ background:rgba(255,255,255,0.22); transform:translateY(-3px); }
+  .stat .num{ font-family:'Fraunces', serif; font-size:27px; color:#fff; font-weight:600; }
+  .stat .label{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:rgba(255,255,255,0.85); margin-top:4px; max-width:150px; letter-spacing:0.01em; }
+  .hero-actions{ display:flex; gap:14px; margin-top:55px; flex-wrap:wrap; opacity:1; visibility:visible; animation:none; }
+  .btn{ padding:13px 26px; border-radius:8px; font-size:14px; transition:.2s ease; display:inline-flex; align-items:center; gap:8px; }
+  .btn-primary{ display:inline-flex; opacity:1; visibility:visible; background:#ffc93c; color:#111827; font-weight:600; box-shadow:0 6px 18px rgba(255,183,3,0.35); }
+  .btn-primary:hover{ background:#ffc93c; box-shadow:0 8px 22px rgba(255,183,3,0.45); transform:translateY(-1px); }
+  @media (max-width:760px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo{ justify-self:start; order:-1; }
+    .hero-stats{ grid-template-columns:1fr; }
+  }
+
+  section{ padding:100px 0 80px; border-bottom:1px solid var(--line); }
+  section:nth-of-type(even){ background:var(--bg-alt); }
+  .section-head{ margin-bottom:40px; }
+  .section-head .kicker{ display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--accent-deep); background:var(--accent-soft); border:1px solid var(--accent); text-transform:uppercase; letter-spacing:0.09em; margin-bottom:10px; font-weight:600; padding:5px 12px; border-radius:20px; }
+  .section-head h2{ font-size:27px; }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:start; padding-top:35px; }
+  .about-grid p{ color:var(--ink-soft); font-size:16px; margin-bottom:16px; max-width:520px; }
+  .edu-card{ background:var(--panel); border:1px solid var(--line); padding:28px; border-radius:8px; box-shadow:var(--shadow); transition:box-shadow .25s ease, transform .25s ease; }
+  .edu-card:hover{ box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+  .edu-card h3{ font-size:17px; margin-bottom:4px; }
+  .edu-card .school{ color:var(--ink-soft); font-size:14px; }
+  .edu-card .meta{ display:flex; justify-content:space-between; margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--accent); border-top:1px solid var(--line); padding-top:14px; }
+
+  /* SKILLS */
+  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  .skill-group{ padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); transition:box-shadow .25s ease, transform .25s ease; }
+  .skill-group:hover{ box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+  .skill-group .cat{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px; font-weight:500; }
+  .chips{ display:flex; flex-wrap:wrap; gap:7px; }
+  .chip{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent-deep); background:var(--accent-soft); padding:4px 10px; border-radius:4px; }
+
+  /* PROJECTS */
+  .project{ padding:28px; margin-bottom:18px; background:var(--panel); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); transition:box-shadow .25s ease, transform .25s ease; display:grid; grid-template-columns:1fr; gap:10px; }
+  .project:hover{ box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+  .project-top{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .project h3{ font-size:20px; }
+  .project a.link{ font-size:15px; color:#111827; font-weight:600; border-bottom:1px solid var(--accent); white-space:nowrap; padding-bottom:2px; }
+  .project a.link:hover{ border-bottom-color:var(--accent); }
+  .project p{ color:var(--ink-soft); max-width:660px; }
+
+  /* ACHIEVEMENTS */
+  .ach-list{ display:flex; flex-direction:column; gap:14px; }
+  .ach{ display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); transition:box-shadow .25s ease, transform .25s ease; }
+  .ach:hover{ box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+  .ach .tagpill{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; align-self:start; padding-top:3px; font-weight:600; border-radius:20px; padding:4px 12px; justify-self:start; color:var(--accent); background:var(--accent-soft); border:1px solid var(--accent); }
+  .tag-violet{ color:#374151; background:#f3f4f6; border:1px solid #374151; }
+  .tag-coral{ color:#e0355a; background:#ffe4e9; border:1px solid #9ca3af; }
+  .tag-amber{ color:#a8710a; background:#fff3d6; border:1px solid var(--highlight); }
+  .tag-teal{ color:#0f7a68; background:#dcf6ef; border:1px solid #14b892; }
+  .tag-blue{ color:#1d5fd6; background:#e2ecff; border:1px solid #4b8bff; }
+  .ach h4{ font-family:'Fraunces', serif; font-size:16px; font-weight:600; margin-bottom:4px; color:var(--ink); }
+  .ach p{ color:var(--ink-soft); font-size:14.5px; min-height:70px; position:relative; padding-bottom:42px; }
+  .ach a{ display:inline-block; position:absolute; bottom:0; left:0; min-width:140px; text-align:center; color:var(--accent-deep); font-weight:600; font-size:13.5px; background:var(--accent-soft); border:1px solid var(--accent); padding:6px 14px; border-radius:8px; transition:.2s ease; }
+  .ach a:hover{ background:var(--accent); color:#fff; }
+
+  /* FOOTER */
+  footer{ padding:80px 0 56px; }
+  footer p.sub{ color:var(--ink-soft); max-width:480px; margin-top:8px; margin-bottom:34px; }
+  .contact-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px; }
+  .contact-item{ font-size:14px; border:1px solid var(--line); padding:11px 20px; border-radius:8px; background:var(--panel); transition:.2s ease; box-shadow:var(--shadow); }
+  .contact-item:hover{ border-color:var(--accent); color:var(--accent); box-shadow:var(--shadow-hover); transform:translateY(-1px); }
+  .foot-bottom{ display:flex; justify-content:space-between; color:var(--ink-soft); font-size:12.5px; flex-wrap:wrap; gap:10px; border-top:1px solid var(--line); padding-top:24px; }
+
+  @media (max-width:760px){
+    .navlinks{ display:flex; overflow-x:auto; gap:20px; -ms-overflow-style:none; scrollbar-width:none; }
+    .navlinks::-webkit-scrollbar{ display:none; }
+    .about-grid, .ach{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="mark">AK</span><h2>Azmat Khaji</h2></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Software engineer building full-stack products and agentic AI systems.</h1>
+      <p class="lede">Strong foundation in DSA (Java), backend development, and system design - applied through shipped, working projects. Open to Software Engineer, AI Engineer, and Full-Stack Developer roles.</p>
+
+      <div class="hero-stats">
+        <div class="stat"><div class="num">9.92</div><div class="label">CGPA out of 10</div></div>
+        <div class="stat"><div class="num">5</div><div class="label">Projects shipped</div></div>
+        <div class="stat"><div class="num">120+</div><div class="label">DSA problems(Java)-LeetCode</div></div>
+        <div class="stat"><div class="num">2027</div><div class="label">Graduating</div></div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="assets/Resume_Portfolio.pdf" download>Download Resume</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker"><h2>About</h2></div></div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a final-year Computer Science student at SJB Institute of Technology, Bengaluru. My work is grounded in core CS fundamentals - data structures and algorithms, databases, operating systems, and system design - and applied through projects that solve real, working problems rather than tutorial exercises.</p>
+        <p>My primary interest is agentic AI: designing multi-agent systems that retain and reason over context, which shaped my main project, NeuralEngram. Alongside that, I build full-stack applications with Django and Spring Boot, and I hold a certification in RPA workflow automation with UiPath.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px; width:100%;">
+        <div class="edu-card">
+          <h3>B.E. Computer Science & Engineering</h3>
+          <div class="school">SJB Institute of Technology, Bengaluru</div>
+          <div class="meta"><span>2023 - 2027</span><span>CGPA: 9.92 / 10</span></div>
+        </div>
+        <div class="edu-card">
+          <h3>Pre-University (PCMB)</h3>
+          <div class="school">Sri Guru Chaitanya PU College</div>
+          <div class="meta"><span>2021 - 2023</span><span>Percentage: 95.33%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker"><h2>Skills</h2></div></div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="cat">Languages</div>
+        <div class="chips"><span class="chip">Java</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="cat">Frameworks</div>
+        <div class="chips"><span class="chip">Django</span><span class="chip">Spring Boot</span><span class="chip">REST APIs</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="cat">Core CS</div>
+        <div class="chips"><span class="chip">DSA</span><span class="chip">DBMS</span><span class="chip">OOP</span><span class="chip">Operating Systems</span><span class="chip">Computer Networks</span><span class="chip">System Design</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="cat">AI / ML</div>
+        <div class="chips"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">OpenCV</span><span class="chip">MediaPipe</span><span class="chip">LangGraph</span><span class="chip">LLM APIs</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="cat">Databases & Cloud</div>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">AWS EC2</span><span class="chip">AWS S3</span><span class="chip">DynamoDB</span></div>
+      </div>
+      <div class="skill-group">
+        <div class="cat">Tools</div>
+        <div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span><span class="chip">Jupyter</span><span class="chip">UiPath Studio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker"><h2>Projects</h2></div></div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>NeuralEngram</h3>
+        <a class="link" href="https://github.com/NeuralEngram-UIP/multiagent-memory-system" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <p>A multi-agent memory system that lets AI agents retain and recall context across sessions, using Ebbinghaus Curve-based decay modeling to decide what's worth remembering. Achieved 75–100% context retention accuracy, outperforming zero-memory baseline agents on long-term recall.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">LangGraph</span><span class="chip">SQLite</span><span class="chip">Claude API</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Advanced Result Analytics Suite</h3>
+        <a class="link" href="https://github.com/AZMAT-KHAJI/Advanced_Result_Analytics_Suite" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <p>An end-to-end academic analytics platform that processes result data for any number of students, with dynamic visual dashboards and one-click exportable performance reports.</p>
+      <div class="chips"><span class="chip">Django</span><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Chart.js</span><span class="chip">SQLite</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Computer Vision Based Virtual Mouse</h3>
+        <a class="link" href="https://github.com/AZMAT-KHAJI/Computer-Vision-Based-Virtual-Mouse" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <p>A real-time, touchless mouse-control application using webcam-based hand landmark detection - enabling gesture-based cursor movement and clicks with no physical input device.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">MediaPipe</span><span class="chip">PyAutoGUI</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Campus Notice Tracker</h3>
+        <a class="link" href="https://github.com/AZMAT-KHAJI/Campus_Notice_Tracker" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <p>A web-based application that centralizes campus notices and announcements onto a single digital platform, replacing scattered communication through emails, posters, and WhatsApp with one place for students and administrators to track updates.</p>
+      <div class="chips"><span class="chip">Django</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Hostel Management System</h3>
+        <a class="link" href="https://github.com/AZMAT-KHAJI/Hostel_Management_System" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <p>A full-stack system for managing hostel operations, with custom user authentication, room allocation, student management, booking workflows, and administrative controls.</p>
+      <div class="chips"><span class="chip">Django</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker"><h2>Achievements</h2></div><h3>Recognition & Certifications</h3></div>
+    <div class="ach-list">
+      <div class="ach">
+        <div class="tagpill tag-violet">Competition</div>
+        <div><h4>Shortlisted - Unisys UIP17</h4><p>Submitted NeuralEngram and advanced to the Round 2 pre-final stage of the challenge under "Unleashed Agents" theme.</p></div>
+      </div>
+      <div class="ach">
+        <div class="tagpill tag-blue">Certification</div>
+        <div><h4>NPTEL - Introduction to Internet of Things</h4><p>Covers IoT architecture, sensor networks, and connected device protocols. <a href="https://drive.google.com/file/d/1fGW3RiLp7Uw5vqNm6_jFc3wPn1EkDTSn/view?usp=drivesdk" target="_blank" rel="noopener">View certificate</a></p></div>
+      </div>
+      <div class="ach">
+        <div class="tagpill tag-teal">DSA</div>
+        <div><h4>120+ Problems Solved - LeetCode (Java)</h4><p>Regular practice across arrays, Linked Lists, hash tables, binary search, and two pointers. <a href="https://leetcode.com/u/AZMAT_KHAJI_06/" target="_blank" rel="noopener">View profile</a></p></div>
+      </div>
+      <div class="ach">
+        <div class="tagpill tag-amber">Academic</div>
+        <div><h4>Rank 1, CSE Department</h4><p>Sustained top rank in the department from 3rd semester onward.</p></div>
+      </div>
+      <div class="ach">
+        <div class="tagpill tag-coral">Hackathon</div>
+        <div><h4>Winner, Django: Build for Campus</h4><p>Built the Advanced Result Analytics Suite under competitive time constraints. <a href="https://drive.google.com/file/d/1qe9Ynj42uuQOtEEK7jm-8p7nczazOy51/view?usp=drivesdk" target="_blank" rel="noopener">View certificate</a></p></div>
+      </div>
+      <div class="ach">
+        <div class="tagpill tag-blue">Certification</div>
+        <div><h4>NPTEL - AI in Human Resource Management</h4><p>Ranked among the top 1% of learners; covers applied AI in enterprise systems. <a href="https://drive.google.com/file/d/11eQJfTkMzgdmL2k-i4mkxQpWn3nzeIfN/view?usp=sharing" target="_blank" rel="noopener">View certificate</a></p></div>
+      </div>
+      <div class="ach">
+        <div class="tagpill tag-teal">Credential</div>
+        <div><h4>UiPath - Automation Explorer</h4><p>Certified in RPA concepts and workflow automation using UiPath Studio, via RPA Nexus Club. <a href="https://credentials.uipath.com/c6974c1a-1400-450a-89e2-471de2a2fd70#acc.L0ZVzqct" target="_blank" rel="noopener">View credential</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker"><h2>Contact</h2></div><h2>Let's connect</h2></div>
+    <p>Open to Software Engineer, AI Engineer, and Full-Stack Developer roles.</p>
+    <br>
+    <div class="contact-row">
+      <a class="contact-item" href="mailto:azmatkhaji06@gmail.com">azmatkhaji06@gmail.com</a>
+      <a class="contact-item" href="https://www.linkedin.com/in/azmatkhaji" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="contact-item" href="https://github.com/AZMAT-KHAJI" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="foot-bottom">
+      <span>©Azmat Khaji</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const targets = document.querySelectorAll('.edu-card, .skill-group, .project, .ach');
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
